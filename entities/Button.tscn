@@ -1,0 +1,106 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://entities/Button.gd" type="Script" id=1]
+[ext_resource path="res://images/floor-button.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 3, 4 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 2 )
+
+[node name="Button" type="Node2D" groups=[
+"Button",
+"Job",
+]]
+
+z_index = -1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+
+[node name="Left" type="Area2D" parent="." index="1"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left" index="0"]
+
+position = Vector2( -4, -1 )
+shape = SubResource( 1 )
+
+[node name="Top" type="Area2D" parent="." index="2"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top" index="0"]
+
+position = Vector2( 0, -4 )
+shape = SubResource( 2 )
+
+[node name="Right" type="Area2D" parent="." index="3"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right" index="0"]
+
+position = Vector2( 4, -1 )
+shape = SubResource( 1 )
+
+[node name="Bottom" type="Area2D" parent="." index="4"]
+
+position = Vector2( 0, 1 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom" index="0"]
+
+position = Vector2( 0, 2 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="Left" to="." method="_on_Left_body_entered"]
+
+[connection signal="body_exited" from="Left" to="." method="_on_Left_body_exited"]
+
+[connection signal="body_entered" from="Top" to="." method="_on_Top_body_entered"]
+
+[connection signal="body_exited" from="Top" to="." method="_on_Top_body_exited"]
+
+[connection signal="body_entered" from="Right" to="." method="_on_Right_body_entered"]
+
+[connection signal="body_exited" from="Right" to="." method="_on_Right_body_exited"]
+
+[connection signal="body_entered" from="Bottom" to="." method="_on_Bottom_body_entered"]
+
+[connection signal="body_exited" from="Bottom" to="." method="_on_Bottom_body_exited"]
+
+

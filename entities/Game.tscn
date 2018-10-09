@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Main.theme" type="Theme" id=2]
-[ext_resource path="res://entities/MainMenu.tscn" type="PackedScene" id=3]
-[ext_resource path="res://entities/GameOverScreen.tscn" type="PackedScene" id=4]
-[ext_resource path="res://entities/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://images/background.png" type="Texture" id=6]
+[ext_resource path="res://entities/GameOverScreen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://entities/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://images/background.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -27,21 +26,21 @@ __meta__ = {
 
 [node name="Gui" type="CanvasLayer" parent="." index="0"]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
-[node name="Hud" type="CenterContainer" parent="Gui" index="0"]
+[node name="Container" type="Container" parent="Gui" index="0"]
 
 editor/display_folded = true
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 513.0
+margin_right = 512.0
 margin_bottom = 512.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -50,37 +49,17 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 theme = ExtResource( 2 )
-use_top_left = false
-_sections_unfolded = [ "Mouse", "Theme" ]
+_sections_unfolded = [ "Mouse", "Size Flags", "Theme" ]
 
-[node name="VBox" type="VBoxContainer" parent="Gui/Hud" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 206.0
-margin_top = 8.0
-margin_right = 306.0
-margin_bottom = 504.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_constants/separation = 440
-alignment = 0
-_sections_unfolded = [ "Theme", "custom_constants" ]
-
-[node name="Time" type="Label" parent="Gui/Hud/VBox" index="0"]
+[node name="Time" type="Label" parent="Gui/Container" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 100.0
-margin_bottom = 28.0
+margin_top = 13.0
+margin_right = 512.0
+margin_bottom = 41.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -88,25 +67,24 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 4
-custom_constants/shadow_offset_y = -2
-text = "Time: 60"
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 3
+text = "60"
 align = 1
-valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Hint", "Material", "Theme", "custom_colors", "custom_constants", "custom_fonts" ]
+_sections_unfolded = [ "Mouse", "Theme", "custom_colors", "custom_constants", "custom_fonts" ]
 
-[node name="Cash" type="Label" parent="Gui/Hud/VBox" index="1"]
+[node name="JobsDone" type="Label" parent="Gui/Container" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 468.0
-margin_right = 100.0
-margin_bottom = 496.0
+margin_top = 457.0
+margin_right = 512.0
+margin_bottom = 513.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -114,20 +92,17 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 4
-custom_constants/shadow_offset_y = 4
-text = "Cash: 0$"
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 3
+text = "Jobs Done:"
 align = 1
+valign = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Theme", "Visibility" ]
+_sections_unfolded = [ "Theme", "custom_colors", "custom_constants", "custom_fonts" ]
 
-[node name="Control" parent="Gui" index="1" instance=ExtResource( 3 )]
-
-mouse_filter = 0
-
-[node name="GameOverScreen" parent="Gui" index="2" instance=ExtResource( 4 )]
+[node name="GameOverScreen" parent="Gui" index="1" instance=ExtResource( 3 )]
 
 visible = false
 
@@ -136,7 +111,7 @@ visible = false
 sort_enabled = true
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Player" parent="Objects" index="0" instance=ExtResource( 5 )]
+[node name="Player" parent="Objects" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( 128, 128 )
 
@@ -156,7 +131,7 @@ _sections_unfolded = [ "Pickable" ]
 
 position = Vector2( 128, 128 )
 z_index = -4096
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Z Index" ]
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounderies" index="1"]
@@ -211,8 +186,6 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Offset", "Smoothing", "Transform" ]
-
-[connection signal="play" from="Gui/Control" to="." method="_on_play"]
 
 [connection signal="timeout" from="JobSpawner" to="." method="_on_JobSpawner_timeout"]
 

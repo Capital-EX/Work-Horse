@@ -11,7 +11,14 @@ config_version=3
 [application]
 
 config/name="Work Horse"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=512
+window/size/height=512
+window/size/resizable=false
 
 [importer_defaults]
 
