@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Main.theme" type="Theme" id=2]
@@ -16,6 +16,16 @@ extents = Vector2( 84, 10 )
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 91 )
+
+[sub_resource type="AudioStreamSample" id=3]
+
+format = 0
+loop_mode = 0
+loop_begin = 0
+loop_end = 0
+mix_rate = 44100
+stereo = false
+data = PoolByteArray(  )
 
 [node name="Main" type="Node2D" index="0"]
 
@@ -211,6 +221,15 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Offset", "Smoothing", "Transform" ]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="5"]
+
+stream = SubResource( 3 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [connection signal="play" from="Gui/Control" to="." method="_on_play"]
 
