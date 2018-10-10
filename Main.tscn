@@ -133,7 +133,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Theme", "Visibility" ]
 
-[node name="Control" parent="Gui" index="1" instance=ExtResource( 3 )]
+[node name="Menu" parent="Gui" index="1" instance=ExtResource( 3 )]
 
 mouse_filter = 0
 
@@ -231,7 +231,7 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[connection signal="play" from="Gui/Control" to="." method="_on_play"]
+[connection signal="play" from="Gui/Menu" to="." method="_on_play"]
 
 [connection signal="timeout" from="JobSpawner" to="." method="_on_JobSpawner_timeout"]
 

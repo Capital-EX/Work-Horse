@@ -14,11 +14,18 @@ var jobs_todo = 0
 var spaces = []
 var test_point = RectangleShape2D.new()
 var time = 60
+var highscore = 0
 onready var Player = $Objects/Player
 onready var PlayerCollision = $Objects/Player/Shape
 onready var player_shape = $Objects/Player/Shape.shape
 
 func _ready():
+	var file = File.new()
+	if file.file_exists("user://high.score"):
+		file.open("user://high.score", File.READ)
+		highscore = file.get_32()
+	$Gui/Menu.set_score(highscore)
+	
 	test_point.extents = Vector2(8, 8)
 	$Gui/Hud/VBox/Time.text = "Time: %.1f" % time
 	$Gui/Hud/VBox/Cash.text = "Cash: %d$" % cash
@@ -32,9 +39,10 @@ func _process(delta):
 	time -= delta
 	if time <= 0:
 		get_tree().paused = true
-		var file = File.new()
-		file.open("user://high.score", File.WRITE)
-		file.store_32(cash)
+		if cash > highscore:
+			var file = File.new()
+			file.open("user://high.score", File.WRITE)
+			file.store_32(cash)
 		$Gui/GameOverScreen/CenterContainer/Cash.text = "Cash: %d$" % cash
 		$Gui/Hud/VBox.hide()
 		$Gui/GameOverScreen.show()
