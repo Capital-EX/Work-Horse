@@ -8,7 +8,7 @@ func _ready():
 	
 
 func set_score(score):
-	$VBoxContainer/VBoxContainer/HighScore.text = "High Score: %d$" % score
+	$VBoxContainer/Title/HighScore.text = "High Score: %d$" % score
 
 func _on_Button_pressed():
 	get_tree().paused = false

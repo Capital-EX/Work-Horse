@@ -3,7 +3,6 @@ signal completed
 
 var active = false
 var progress = 0.0
-var color = Color(1, 0, 0)
 
 func _ready():
 	$Label.text = "%d" % progress
