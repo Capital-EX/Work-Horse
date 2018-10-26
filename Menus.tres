@@ -14,9 +14,9 @@ _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [sub_resource type="StyleBoxFlat" id=2]
 
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 5.0
 content_margin_bottom = -1.0
 bg_color = Color( 0.31027, 0.582031, 0.234177, 1 )
 draw_center = true
@@ -31,15 +31,15 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 corner_detail = 8
-expand_margin_left = 42.0
-expand_margin_right = 42.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
 shadow_color = Color( 0, 0, 0, 0.6 )
 shadow_size = 0
 anti_aliasing = true
 anti_aliasing_size = 1
-_sections_unfolded = [ "Anti Aliasing", "Border", "Border Width", "Content Margin", "Corner Radius", "Expand Margin" ]
+_sections_unfolded = [ "Anti Aliasing", "Border", "Border Width", "Content Margin", "Corner Radius", "Expand Margin", "Shadow" ]
 
 [sub_resource type="StyleBoxFlat" id=3]
 
@@ -60,8 +60,8 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 corner_detail = 8
-expand_margin_left = 42.0
-expand_margin_right = 42.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
 expand_margin_top = 0.0
 expand_margin_bottom = 0.0
 shadow_color = Color( 0, 0, 0, 0.6 )
@@ -93,5 +93,26 @@ Button/styles/focus = null
 Button/styles/hover = SubResource( 2 )
 Button/styles/normal = SubResource( 2 )
 Button/styles/pressed = SubResource( 3 )
-_sections_unfolded = [ "Button", "Button/colors", "Button/constants", "Button/fonts", "Button/icons", "Button/styles", "Resource" ]
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 5
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = null
+Label/styles/normal = null
+RichTextLabel/colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+RichTextLabel/colors/font_color_selected = Color( 0.490196, 0.490196, 0.490196, 1 )
+RichTextLabel/colors/selection_color = Color( 0.1, 0.1, 1, 0.8 )
+RichTextLabel/constants/line_separation = 1
+RichTextLabel/constants/table_hseparation = 3
+RichTextLabel/constants/table_vseparation = 3
+RichTextLabel/fonts/bold_font = null
+RichTextLabel/fonts/bold_italics_font = null
+RichTextLabel/fonts/italics_font = null
+RichTextLabel/fonts/mono_font = null
+RichTextLabel/fonts/normal_font = null
+RichTextLabel/styles/focus = null
+RichTextLabel/styles/normal = null
+_sections_unfolded = [ "Button", "Button/colors", "Button/constants", "Button/fonts", "Button/icons", "Button/styles", "Label", "Label/colors", "Label/constants", "Label/fonts", "Label/styles", "Resource", "RichTextLabel", "RichTextLabel/colors", "RichTextLabel/constants", "RichTextLabel/fonts", "RichTextLabel/styles" ]
 
