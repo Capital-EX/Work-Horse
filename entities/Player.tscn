@@ -1,15 +1,16 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://entities/Player.gd" type="Script" id=1]
-[ext_resource path="res://images/player.png" type="Texture" id=2]
-[ext_resource path="res://images/player-push.png" type="Texture" id=3]
+[ext_resource path="res://images/shadow.png" type="Texture" id=2]
+[ext_resource path="res://images/player.png" type="Texture" id=3]
+[ext_resource path="res://images/player-push.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 3, 3 )
+extents = Vector2( 9, 6 )
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=2]
 
 resource_name = "idle-down"
 length = 1.0
@@ -28,7 +29,7 @@ tracks/0/keys = {
 "values": [ 12 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=3]
 
 length = 1.0
 loop = false
@@ -46,7 +47,7 @@ tracks/0/keys = {
 "values": [ 6 ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=4]
 
 length = 1.0
 loop = false
@@ -64,7 +65,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=5]
 
 resource_name = "idle-right"
 length = 1.0
@@ -83,7 +84,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=6]
 
 resource_name = "idle-up"
 length = 1.0
@@ -159,7 +160,7 @@ tracks/0/keys = {
 "values": [ 0, 4 ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=10]
 
 resource_name = "push-up"
 length = 0.5
@@ -259,44 +260,53 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Normal" type="Sprite" parent="." index="0"]
+[node name="shadow" type="Sprite" parent="." index="0"]
 
+position = Vector2( 0, 22 )
+scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Normal" type="Sprite" parent="." index="1"]
+
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 3 )
 vframes = 4
 hframes = 6
-_sections_unfolded = [ "Animation" ]
+frame = 12
+_sections_unfolded = [ "Animation", "Transform" ]
 
-[node name="Pushing" type="Sprite" parent="." index="1"]
+[node name="Pushing" type="Sprite" parent="." index="2"]
 
 visible = false
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 vframes = 4
 hframes = 5
 frame = 12
 _sections_unfolded = [ "Animation", "Region" ]
 
-[node name="Shape" type="CollisionShape2D" parent="." index="2"]
+[node name="Shape" type="CollisionShape2D" parent="." index="3"]
 
-position = Vector2( 0, 4 )
+position = Vector2( 0, 18 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Collision", "Transform", "Z Index", "collision" ]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 
 root_node = NodePath("..")
-autoplay = "idle-right"
+autoplay = "idle-down"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/idle-down = SubResource( 15 )
-anims/idle-left = SubResource( 16 )
-anims/idle-right = SubResource( 17 )
-"anims/idle-right (copy)" = SubResource( 18 )
-anims/idle-up = SubResource( 19 )
+anims/idle-down = SubResource( 2 )
+anims/idle-left = SubResource( 3 )
+anims/idle-right = SubResource( 4 )
+"anims/idle-right (copy)" = SubResource( 5 )
+anims/idle-up = SubResource( 6 )
 anims/push-down = SubResource( 7 )
 anims/push-left = SubResource( 8 )
 anims/push-right = SubResource( 9 )
-anims/push-up = SubResource( 20 )
+anims/push-up = SubResource( 10 )
 anims/walk-down = SubResource( 11 )
 anims/walk-left = SubResource( 12 )
 anims/walk-right = SubResource( 13 )
