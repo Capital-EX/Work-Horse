@@ -27,8 +27,8 @@ func _ready():
 	$Gui/Menu.set_score(highscore)
 	
 	test_point.extents = Vector2(8, 8)
-	$Gui/Hud/VBox/Time.text = "Time: %.1f" % time
-	$Gui/Hud/VBox/Cash.text = "Cash: %d$" % cash
+	$Gui/VBox/Time.text = "Time: %.1f" % time
+	$Gui/VBox/Cash.text = "Cash: %d$" % cash
 	spaces.resize(100)
 	for y in range(0, 10):
 		for x in range(0, 10):
@@ -44,9 +44,9 @@ func _process(delta):
 			file.open("user://high.score", File.WRITE)
 			file.store_32(cash)
 		$Gui/GameOverScreen/CenterContainer/Cash.text = "Cash: %d$" % cash
-		$Gui/Hud/VBox.hide()
+		$Gui/VBox.hide()
 		$Gui/GameOverScreen.show()
-	$Gui/Hud/VBox/Time.text = "Time: %.2f" % time
+	$Gui/VBox/Time.text = "Time: %.2f" % time
 	
 	
 func _on_completed(job):
