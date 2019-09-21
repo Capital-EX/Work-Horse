@@ -3,8 +3,6 @@ signal completed
 var turns = 3
 var active = false
 var old_angle = 0
-var d_angle = 0
-var total_rotation = 0
 var start_angle = 0
 var delta_mouse_pos = Vector2()
 var old_mouse_pos = Vector2()
@@ -22,10 +20,6 @@ func _process(delta):
 		Wheel.rotation = Wheel.global_position.angle_to_point(get_global_mouse_position()) - start_angle
 	delta_mouse_pos = mouse_pos - old_mouse_pos
 	old_mouse_pos = mouse_pos
-
-func _input(event):
-	if event is InputEventKey and event.scancode == KEY_M:
-		activate()
 
 func activate():
 	set_all_false()
@@ -54,7 +48,7 @@ func are_all_false():
 	return not (state[0] and state[1] and state[2] and state[3])
 
 func in_order(i):
-	return state[3 if i == 0 else len(state) - i - 1] and state[(i + 1) % 4]
+	return state[(i + 3) % 4] and state[(i + 1) % 4]
 
 func enable(i):
 	if active and are_all_false() or in_order(i):

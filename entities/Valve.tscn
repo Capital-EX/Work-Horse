@@ -10,9 +10,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 8, 3 )
+extents = Vector2( 23, 5 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=2]
 
 size = 32
 use_mipmaps = false
@@ -20,22 +20,22 @@ use_filter = false
 font_data = ExtResource( 6 )
 _sections_unfolded = [ "Resource", "Settings" ]
 
-[sub_resource type="RectangleShape2D" id=2]
-
-custom_solver_bias = 0.0
-extents = Vector2( 60, 128 )
-
-[sub_resource type="RectangleShape2D" id=5]
-
-custom_solver_bias = 0.0
-extents = Vector2( 128, 60 )
-
 [sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 60, 128 )
 
-[node name="Valve" type="StaticBody2D"]
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 128, 60 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 60, 128 )
+
+[node name="Valve" type="StaticBody2D" index="0"]
 
 input_pickable = true
 collision_layer = 1
@@ -49,11 +49,13 @@ _sections_unfolded = [ "Collision", "Pickable", "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
+scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-position = Vector2( 0, 6 )
+position = Vector2( 0, 18 )
 shape = SubResource( 1 )
 
 [node name="Overlay" type="Node" parent="." index="2"]
@@ -93,7 +95,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 5
 text = "Turns Left: 0"
@@ -106,6 +108,7 @@ _sections_unfolded = [ "Grow Direction", "Hint", "Mouse", "Rect", "Size Flags", 
 
 [node name="Triggers" type="Node2D" parent="Overlay" index="1"]
 
+visible = false
 position = Vector2( 128, 128 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
@@ -124,7 +127,7 @@ _sections_unfolded = [ "Pickable", "Transform" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Overlay/Triggers/A" index="0"]
 
 position = Vector2( -68, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="B" type="Area2D" parent="Overlay/Triggers" index="1"]
@@ -143,7 +146,7 @@ _sections_unfolded = [ "Audio Bus", "Collision", "Pickable" ]
 
 modulate = Color( 0, 1, 0.226563, 1 )
 position = Vector2( 0, -68 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [node name="C" type="Area2D" parent="Overlay/Triggers" index="2"]
@@ -162,7 +165,7 @@ _sections_unfolded = [ "Pickable", "Transform" ]
 
 modulate = Color( 0, 0.53125, 1, 1 )
 position = Vector2( 0, 68 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="D" type="Area2D" parent="Overlay/Triggers" index="3"]
@@ -180,7 +183,7 @@ _sections_unfolded = [ "Pickable", "Transform" ]
 
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 68, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [connection signal="mouse_entered" from="Overlay/Triggers/A" to="." method="_on_A_mouse_entered"]

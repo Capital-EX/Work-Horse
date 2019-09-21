@@ -24,3 +24,4 @@ func deactivate():
 	active = false
 
 func is_active():
+	return active
