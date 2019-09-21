@@ -4,10 +4,7 @@ signal type
 
 enum Objects {NOTHING, COMPUTER, VALVE, BOX}
 
-const Box = preload("res://entities/Box.gd")
-const Computer = preload("res://entities/Computer.gd")
-const Valve = preload("res://entities/Valve.gd")
-const SPEED = 100
+const SPEED = 250
 const PUSH_SPEED = 10
 const ACCEL = 400
 
@@ -36,17 +33,18 @@ var velocity = Vector2()
 var motion = Vector2()
 var direction = "right"
 
-var work = NOTHING
-var touching = NOTHING
+var work = Objects.NOTHING
+var touching = Objects.NOTHING
 var last_collision = null
 
 func _ready():
 	pass
 
 func _physics_process(delta):
-	if work == NOTHING:
+	if work == Objects.NOTHING:
 		walk(delta)
-	elif work == BOX:
+		
+	elif work == Objects.BOX:
 		push(delta)
 
 func _on_job_completed():
@@ -57,8 +55,10 @@ func push(delta):
 	move_and_slide(motion * PUSH_SPEED)
 	motion.x = max(motion.x - delta * 4, 0) if motion.x > 0 else min(motion.x + delta * 4, 0)
 	motion.y = max(motion.y - delta * 4, 0) if motion.y > 0 else min(motion.y + delta * 4, 0)
+	
 	if motion.x == 0 and motion.y == 0:
 		$AnimationPlayer.play(PUSHES[direction])
+		
 	elif not $AnimationPlayer.is_playing():
 		$AnimationPlayer.play(PUSHES[direction])
 
@@ -96,21 +96,25 @@ func walk(delta):
 		velocity.y = max(velocity.y - ACCEL * delta, 0) if velocity.y > 0 else min(velocity.y + ACCEL * delta, 0)
 	else:
 		velocity.y = clamp(velocity.y + motion.y, -SPEED, SPEED)
+		
 	if motion.x != 0 or motion.y != 0:
-		touching = NOTHING
+		touching = Objects.NOTHING
 		last_collision = null
 		move_and_slide(velocity)
 		for i in range(0, get_slide_count()):
 			var collision = get_slide_collision(i)
 			var collider = collision.collider
-			if collider is Box:
-				touching = BOX
+			
+			if collider is BoxClass:
+				touching = Objects.BOX
 				last_collision = collider
-			elif collider is Computer:
-				touching = COMPUTER
+				
+			elif collider is ComputerClass:
+				touching = Objects.COMPUTER
 				last_collision = collider
-			elif collider is Valve:
-				touching = VALVE
+				
+			elif collider is ValveClass:
+				touching = Objects.VALVE
 				last_collision = collider
 
 func _on_completed(object):
@@ -121,33 +125,33 @@ func stop_working():
 	last_collision = null
 	$Normal.show()
 	$Pushing.hide()
-	work = NOTHING
-	touching = NOTHING
+	work = Objects.NOTHING
+	touching = Objects.NOTHING
 
 func _input(event):
 	if event is InputEventKey and event.is_pressed() and not event.is_echo():
 		if event.scancode == KEY_SPACE:
-			if work != NOTHING:
+			if work != Objects.NOTHING:
 				stop_working()
 
-			elif touching != NOTHING:
+			elif touching != Objects.NOTHING:
 				work = touching
-				if touching == BOX:
+				if touching == Objects.BOX:
 					motion.x = 0
 					motion.y = 0
 					$Normal.hide()
 					$Pushing.show()
 					last_collision.activate()
 
-				elif touching == COMPUTER:
+				elif touching == Objects.COMPUTER:
 					last_collision.activate()
 				
-				elif touching == VALVE:
+				elif touching == Objects.VALVE:
 					last_collision.activate()
 
 		else:
 			match work:
-				BOX:
+				Objects.BOX:
 					match event.scancode:
 						KEY_A:
 							motion.x -= 1
@@ -158,7 +162,7 @@ func _input(event):
 						KEY_S:
 							motion.y += 1
 
-				COMPUTER:
+				Objects.COMPUTER:
 					emit_signal("type")
 
 

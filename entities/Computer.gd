@@ -1,3 +1,4 @@
+class_name ComputerClass
 extends StaticBody2D
 signal completed
 

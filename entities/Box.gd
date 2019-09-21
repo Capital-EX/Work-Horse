@@ -1,4 +1,7 @@
+class_name BoxClass
+
 extends KinematicBody2D
+signal stuck
 
 var motion = Vector2()
 var slide = 10
