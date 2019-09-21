@@ -5,9 +5,6 @@ const BoxButton = preload("res://entities/Button.tscn")
 const Computer = preload("res://entities/Computer.tscn")
 const Valve = preload("res://entities/Valve.tscn")
 
-const BoxButtonClass = preload("res://entities/Button.gd")
-const ComputerClass = preload("res://entities/Computer.gd")
-const ValveClass = preload("res://entities/Valve.gd")
 
 var cash = 0
 var jobs_todo = 0
@@ -32,7 +29,7 @@ func _ready():
 	spaces.resize(100)
 	for y in range(0, 10):
 		for x in range(0, 10):
-			spaces[x + y * 10] = Vector2(56 + x * 16, 56 + y * 16)
+			spaces[x + y * 10] = Vector2(x * 48 + 144, y * 48 + 144)
 	get_tree().paused = true
 
 func _process(delta):
@@ -64,7 +61,7 @@ func _on_completed(job):
 	cash += pay
 	if $JobSpawner.is_stopped():
 		$JobSpawner.start()
-	$Gui/Hud/VBox/Cash.text = "Cash: %d$" % cash
+	$Gui/VBox/Cash.text = "Cash: %d$" % cash
 	spaces.push_back(job.position)
 
 func get_position():

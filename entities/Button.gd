@@ -1,6 +1,6 @@
+class_name BoxButtonClass
 extends Node2D
 signal completed
-const Box = preload("res://entities/Box.gd")
 
 var target = null
 var triggers = {
@@ -14,7 +14,7 @@ func _ready():
 	pass
 
 func activate(body, trigger):
-	if body is Box:
+	if body is BoxClass:
 		if not target:
 			target = body
 		triggers[trigger] = true
@@ -25,7 +25,7 @@ func activate(body, trigger):
 			target.queue_free()
 
 func deactivate(body, trigger):
-	if body is Box and body.is_active():
+	if body is BoxClass and body.is_active():
 		if not target:
 			target = body
 		triggers[trigger] = false

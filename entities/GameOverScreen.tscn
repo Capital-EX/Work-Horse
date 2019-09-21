@@ -1,123 +1,58 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Menus.tres" type="Theme" id=1]
 [ext_resource path="res://entities/GameOverScreen.gd" type="Script" id=2]
+[ext_resource path="res://shaders/Wiggle.shader" type="Shader" id=3]
+[ext_resource path="res://font/m6x11.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 4 )
 
 [node name="GameOverScreen" type="CenterContainer"]
-
 pause_mode = 2
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = -1.0
-margin_right = 512.0
-margin_bottom = 511.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
 theme = ExtResource( 1 )
-use_top_left = false
 script = ExtResource( 2 )
-_sections_unfolded = [ "Mouse", "Pause", "Theme" ]
 
-[node name="CenterContainer" type="VBoxContainer" parent="." index="0"]
+[node name="CenterContainer" type="VBoxContainer" parent="."]
+margin_left = 258.0
+margin_top = 315.0
+margin_right = 510.0
+margin_bottom = 452.0
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 172.0
-margin_top = 202.0
-margin_right = 340.0
-margin_bottom = 310.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
-_sections_unfolded = [ "Anchor", "Margin" ]
-
-[node name="Label" type="Label" parent="CenterContainer" index="0"]
-
+[node name="Label" type="Label" parent="CenterContainer"]
 modulate = Color( 0.84375, 0.154907, 0.154907, 1 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 168.0
-margin_bottom = 28.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
+material = SubResource( 2 )
+margin_right = 252.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 4
 custom_constants/shadow_offset_y = 2
 text = "Game Over"
 align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_constants" ]
 
-[node name="Cash" type="Label" parent="CenterContainer" index="1"]
-
+[node name="Cash" type="Label" parent="CenterContainer"]
 modulate = Color( 0.348393, 0.789063, 0.225006, 1 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 32.0
-margin_right = 168.0
-margin_bottom = 60.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
+material = SubResource( 2 )
+margin_top = 60.0
+margin_right = 252.0
+margin_bottom = 88.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 4
 custom_constants/shadow_offset_y = 2
 text = "Jobs Finished:"
 align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Material", "Visibility", "custom_colors", "custom_constants" ]
 
-[node name="Replay" type="Button" parent="CenterContainer" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 64.0
-margin_right = 168.0
-margin_bottom = 108.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
+[node name="Replay" type="Button" parent="CenterContainer"]
+material = SubResource( 2 )
+margin_top = 92.0
+margin_right = 252.0
+margin_bottom = 137.0
 text = "Replay"
-flat = false
-align = 1
-
 [connection signal="pressed" from="CenterContainer/Replay" to="." method="_on_Replay_pressed"]
-
-

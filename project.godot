@@ -6,7 +6,35 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=3
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "BoxButtonClass",
+"language": "GDScript",
+"path": "res://entities/Button.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "BoxClass",
+"language": "GDScript",
+"path": "res://entities/Box.gd"
+}, {
+"base": "StaticBody2D",
+"class": "ComputerClass",
+"language": "GDScript",
+"path": "res://entities/Computer.gd"
+}, {
+"base": "StaticBody2D",
+"class": "ValveClass",
+"language": "GDScript",
+"path": "res://entities/Valve.gd"
+} ]
+_global_script_class_icons={
+"BoxButtonClass": "",
+"BoxClass": "",
+"ComputerClass": "",
+"ValveClass": ""
+}
 
 [application]
 

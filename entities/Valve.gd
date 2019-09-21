@@ -1,3 +1,5 @@
+class_name ValveClass
+
 extends StaticBody2D
 signal completed
 var turns = 3

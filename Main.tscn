@@ -10,236 +10,112 @@
 [ext_resource path="res://music/clocked-out.ogg" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
 extents = Vector2( 296, 16 )
 
 [sub_resource type="RectangleShape2D" id=2]
-
-custom_solver_bias = 0.0
 extents = Vector2( 16, 297 )
 
-[node name="Main" type="Node2D" index="0"]
-
+[node name="Main" type="Node2D"]
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 56.0, 72.0, 88.0, 104.0, 120.0, 383.0, 433.0, 479.0, 577.0, 527.0 ],
-"_edit_vertical_guides_": [ 56.0, 72.0, 88.0, 104.0, 120.0, 136.0, 152.0, 168.0, 184.0, 200.0 ]
+"_edit_horizontal_guides_": [ 240.0, 289.0, 337.0, 384.0, 480.0, 528.0, 576.0, 624.0, 432.0, 192.0, 144.0 ],
+"_edit_vertical_guides_": [ 240.0, 192.0, 336.0, 384.0, 144.0, 432.0, 480.0, 288.0, 528.0, 576.0, 624.0 ]
 }
 
-[node name="Gui" type="CanvasLayer" parent="." index="0"]
+[node name="Gui" type="CanvasLayer" parent="."]
 
-editor/display_folded = true
-layer = 1
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-
-[node name="VBox" type="HBoxContainer" parent="Gui" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="VBox" type="HBoxContainer" parent="Gui"]
 margin_left = 24.0
 margin_top = 11.0
 margin_right = 724.0
 margin_bottom = 83.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 theme = ExtResource( 2 )
-alignment = 0
-_sections_unfolded = [ "Anchor", "Focus", "Hint", "Margin", "Material", "Mouse", "Rect", "Theme", "Visibility", "custom_constants" ]
 
-[node name="Time" type="Label" parent="Gui/VBox" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Time" type="Label" parent="Gui/VBox"]
 margin_top = 22.0
 margin_right = 348.0
 margin_bottom = 50.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
-size_flags_vertical = 4
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 4
 custom_constants/shadow_offset_y = -2
 text = "Time: 60"
 align = 1
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Hint", "Material", "Size Flags", "Theme", "custom_colors", "custom_constants", "custom_fonts" ]
 
-[node name="Cash" type="Label" parent="Gui/VBox" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Cash" type="Label" parent="Gui/VBox"]
 margin_left = 352.0
 margin_top = 22.0
 margin_right = 700.0
 margin_bottom = 50.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
-size_flags_vertical = 4
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 4
 custom_constants/shadow_offset_y = 4
 text = "Cash: 0$"
 align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "Theme", "Visibility" ]
 
-[node name="Hud" type="CenterContainer" parent="Gui" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Hud" type="CenterContainer" parent="Gui"]
 margin_right = 768.0
 margin_bottom = 768.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 theme = ExtResource( 2 )
-use_top_left = false
-_sections_unfolded = [ "Mouse", "Theme" ]
 
-[node name="Menu" parent="Gui" index="2" instance=ExtResource( 3 )]
-
+[node name="Menu" parent="Gui" instance=ExtResource( 3 )]
 mouse_filter = 0
 
-[node name="GameOverScreen" parent="Gui" index="3" instance=ExtResource( 4 )]
-
+[node name="GameOverScreen" parent="Gui" instance=ExtResource( 4 )]
 visible = false
 
-[node name="Bounderies" type="StaticBody2D" parent="." index="1"]
-
+[node name="Bounderies" type="StaticBody2D" parent="."]
 editor/display_folded = true
 input_pickable = true
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Pickable" ]
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
 }
 
-[node name="Background" type="Sprite" parent="Bounderies" index="0"]
-
+[node name="Background" type="Sprite" parent="Bounderies"]
 position = Vector2( 384, 384 )
 z_index = -4096
 texture = ExtResource( 5 )
-_sections_unfolded = [ "Animation", "Offset", "Transform", "Z Index" ]
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounderies" index="1"]
-
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounderies"]
 position = Vector2( 384, 80 )
 shape = SubResource( 1 )
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Bounderies" index="2"]
-
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Bounderies"]
 position = Vector2( 386, 688 )
 shape = SubResource( 1 )
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Bounderies" index="3"]
-
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Bounderies"]
 position = Vector2( 80, 384 )
 shape = SubResource( 2 )
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Bounderies" index="4"]
-
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Bounderies"]
 position = Vector2( 688, 383 )
 shape = SubResource( 2 )
 
-[node name="Objects" type="YSort" parent="." index="2"]
+[node name="Objects" type="YSort" parent="."]
 
-sort_enabled = true
-_sections_unfolded = [ "Transform", "Z Index" ]
-
-[node name="Player" parent="Objects" index="0" instance=ExtResource( 6 )]
-
-position = Vector2( 388, 415 )
+[node name="Player" parent="Objects" instance=ExtResource( 6 )]
+position = Vector2( 384, 415 )
 scale = Vector2( 1.5, 1.5 )
 
-[node name="JobSpawner" type="Timer" parent="." index="3"]
-
-process_mode = 1
+[node name="JobSpawner" type="Timer" parent="."]
 wait_time = 2.0
-one_shot = false
 autostart = true
 
-[node name="Camera2D" type="Camera2D" parent="." index="4"]
-
+[node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
-rotating = false
 current = true
-zoom = Vector2( 1, 1 )
-limit_left = -10000000
-limit_top = -10000000
-limit_right = 10000000
-limit_bottom = 10000000
-limit_smoothed = false
 drag_margin_h_enabled = false
-drag_margin_v_enabled = true
-smoothing_enabled = false
-smoothing_speed = 5.0
-offset_v = 0.0
-offset_h = 0.0
-drag_margin_left = 0.2
-drag_margin_top = 0.2
-drag_margin_right = 0.2
-drag_margin_bottom = 0.2
-editor_draw_screen = true
-editor_draw_limits = false
-editor_draw_drag_margin = false
-_sections_unfolded = [ "Offset", "Smoothing", "Transform" ]
 
-[node name="ClockedIn" type="AudioStreamPlayer" parent="." index="5"]
-
+[node name="ClockedIn" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = 0.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
-bus = "Master"
 
-[node name="ClockOut" type="AudioStreamPlayer" parent="." index="6"]
-
+[node name="ClockOut" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
-volume_db = 0.0
-pitch_scale = 1.0
 autoplay = true
-mix_target = 0
-bus = "Master"
-
 [connection signal="play" from="Gui/Menu" to="." method="_on_play"]
-
 [connection signal="timeout" from="JobSpawner" to="." method="_on_JobSpawner_timeout"]
-
-
