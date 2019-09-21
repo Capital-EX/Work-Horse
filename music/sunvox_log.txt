@@ -1,0 +1,31 @@
+SunDog Engine / Aug  3 2018 22:01:08
+WM: device start
+WM: language = en_US
+WM: screen_zoom = 1
+WM: screen_ppi = 110
+WM: screen size = 800 x 600
+WM: flags SCALABLE 
+WM: system palette init...
+WM: initialized
+DSOUND init...
+Found output device 0: Primary Sound Driver
+Found output device 1: Speakers / Headphones (Realtek Audio)
+Found output device 2: Realtek Digital Output (Realtek Audio)
+Found output device 3: DELL U2415 (NVIDIA High Definition Audio)
+DSOUND: selected device: -1
+DSOUND thread starting...
+DSOUND play
+WM: system palette init...
+MIDI device not found: Fakidi
+MIDI device not found: Fakidi
+Stack ptr: 0
+Stack is clean
+Project length (frames): 169344
+Export time: 0.016000 sec
+Project length (frames): 169344
+Export time: 0.016000 sec
+Project length (frames): 169344
+Export time: 0.016000 sec
+SOUND: sundog_sound_deinit() begin
+SOUND: sundog_sound_deinit() end
+Max memory used: 12444573
